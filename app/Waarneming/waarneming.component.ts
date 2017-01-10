@@ -2,7 +2,7 @@
 * @Author: thomasvanhoutte
 * @Date:   2017-01-09T16:03:27+01:00
 * @Last modified by:   thomasvanhoutte
-* @Last modified time: 2017-01-10T14:49:33+01:00
+* @Last modified time: 2017-01-10T15:15:31+01:00
 */
 
 import { Component, OnInit } from '@angular/core';
@@ -27,12 +27,12 @@ export class WaarnemingComponent implements OnInit {
   errorMsg: string;
   waarnemingen: Array<Waarneming>;
   private sub: any;
-  id: number;
+  id: number
 
   constructor(public vogeltellingService: VogelTellingService, private route: ActivatedRoute) {
   }
 
-  getWaarnemingen(vogeltellingService: VogelTellingService) {
+  getWaarnemingen(vogeltellingService: VogelTellingService, id: Number) {
     return vogeltellingService.getWaarneming(this.id).map((waarnemingen) => {
       this.waarnemingen = waarnemingen;
     });

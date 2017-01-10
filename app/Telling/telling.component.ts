@@ -2,12 +2,12 @@
 * @Author: thomasvanhoutte
 * @Date:   2017-01-09T15:58:37+01:00
 * @Last modified by:   thomasvanhoutte
-* @Last modified time: 2017-01-10T14:37:56+01:00
+* @Last modified time: 2017-01-10T15:18:35+01:00
 */
 
 
 
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Telling } from '../Models/telling.model';
 import { WaarnemingComponent } from '../Waarneming/waarneming.component';
 import { VogelTellingService } from '../Service/vogeltelling.service';
@@ -19,8 +19,8 @@ import { Router } from '@angular/router';
   <div class="tellingen">
     <h3>Tellingen</h3>
     <div class="telling">
-      <table *ngFor="let telling of tellingen; let i = index" class="t{{telling.id}}" (click)="changeID($event, i)" [ngClass]="{'menu_selectedItem': (selectedIndex === i) }">
-      <tr class="t{{telling.id % 2}}" [ngClass]="{'menu_selectedItem': (selectedIndex === i) }">
+      <table>
+      <tr *ngFor="let telling of tellingen; let i = index" (click)="changeID($event, i)" class="{{telling.id}}" [ngClass]="{'menu_selectedItem': (selectedIndex === i) }">
         <td class="{{telling.id}}">{{telling.datum}}</td>
         <td class="{{telling.id}}">{{telling.waarnemer}}</td>
       </tr>
@@ -33,9 +33,10 @@ import { Router } from '@angular/router';
 export class TellingComponent implements OnInit {
   errorMsg: string;
   tellingen: Array<Telling>;
+  selectedIndex: Number;
 
 
-  constructor(public vogeltellingService: VogelTellingService, public router: Router, public zone: NgZone) { }
+  constructor(public vogeltellingService: VogelTellingService, public router: Router) { }
 
   getTellingen(vogeltellingService: VogelTellingService) {
     return this.vogeltellingService.getTelling().map((tellingen) => {
@@ -51,7 +52,7 @@ export class TellingComponent implements OnInit {
 
   changeID(obj: any, i: Number){
       var id = obj.target.attributes.class.nodeValue;
-      let selectedIndex = i;
+      this.selectedIndex = i;
       this.router.navigate(['/telling', id]);
   }
 }
