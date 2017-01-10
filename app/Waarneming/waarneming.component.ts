@@ -2,7 +2,7 @@
 * @Author: thomasvanhoutte
 * @Date:   2017-01-09T16:03:27+01:00
 * @Last modified by:   thomasvanhoutte
-* @Last modified time: 2017-01-10T15:22:55+01:00
+* @Last modified time: 2017-01-10T15:35:26+01:00
 */
 
 import { Component, OnInit } from '@angular/core';
@@ -24,16 +24,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class WaarnemingComponent implements OnInit {
-  errorMsg: string;
   waarnemingen: Array<Waarneming>;
   private sub: any;
-  id: number
 
   constructor(public vogeltellingService: VogelTellingService, private route: ActivatedRoute) {
   }
 
   getWaarnemingen(vogeltellingService: VogelTellingService, id: Number) {
-    return vogeltellingService.getWaarneming(this.id).map((waarnemingen) => {
+    return vogeltellingService.getWaarneming(id).map((waarnemingen) => {
       this.waarnemingen = waarnemingen;
     });
   }
@@ -41,8 +39,8 @@ export class WaarnemingComponent implements OnInit {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-    this.id = +params['id'];
-    this.getWaarnemingen(this.vogeltellingService, this.id).subscribe(_ => {
+    let id = +params['id'];
+    this.getWaarnemingen(this.vogeltellingService, id).subscribe(_ => {
 });
       });
 
