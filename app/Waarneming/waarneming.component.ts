@@ -2,7 +2,7 @@
 * @Author: thomasvanhoutte
 * @Date:   2017-01-09T16:03:27+01:00
 * @Last modified by:   thomasvanhoutte
-* @Last modified time: 2017-01-10T15:15:31+01:00
+* @Last modified time: 2017-01-10T15:22:55+01:00
 */
 
 import { Component, OnInit } from '@angular/core';
@@ -45,10 +45,6 @@ export class WaarnemingComponent implements OnInit {
     this.getWaarnemingen(this.vogeltellingService, this.id).subscribe(_ => {
 });
       });
-
-
-
-
 
   }
 
