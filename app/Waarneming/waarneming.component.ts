@@ -2,7 +2,7 @@
 * @Author: thomasvanhoutte
 * @Date:   2017-01-09T16:03:27+01:00
 * @Last modified by:   thomasvanhoutte
-* @Last modified time: 2017-01-10T13:27:45+01:00
+* @Last modified time: 2017-01-10T14:49:33+01:00
 */
 
 import { Component, OnInit } from '@angular/core';
@@ -25,7 +25,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class WaarnemingComponent implements OnInit {
   errorMsg: string;
-  waarnemingen: Waarneming[];
+  waarnemingen: Array<Waarneming>;
   private sub: any;
   id: number;
 
@@ -38,12 +38,6 @@ export class WaarnemingComponent implements OnInit {
     });
   }
 
-  // changeWaarneming() {
-  //
-  //   sub = this.route.params.subscribe(params => {
-  //     id = +params['id'];
-  //   });
-  // }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {

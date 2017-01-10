@@ -2,7 +2,7 @@
 * @Author: thomasvanhoutte
 * @Date:   2017-01-09T15:58:37+01:00
 * @Last modified by:   thomasvanhoutte
-* @Last modified time: 2017-01-10T14:31:34+01:00
+* @Last modified time: 2017-01-10T14:37:56+01:00
 */
 
 
@@ -32,7 +32,7 @@ import { Router } from '@angular/router';
 
 export class TellingComponent implements OnInit {
   errorMsg: string;
-  tellingen: Telling[];
+  tellingen: Array<Telling>;
 
 
   constructor(public vogeltellingService: VogelTellingService, public router: Router, public zone: NgZone) { }
